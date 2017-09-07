@@ -7,3 +7,4 @@ C# Things Learned:
 - Asynchronous tasks
 
 Xamarin Things Learned:
+- Persisting cross-platform data through SQLite databases
