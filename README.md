@@ -15,7 +15,7 @@ _Through Commit:_ c6149061b94bfbabacdc04b68041f9bedbccf3a1
 - Naming convention: Private variables start with an "_"
 
 _Through Commit:_ b7ad704d5489baf8cbb0cd23de4a1daf5bea149f
-- C# inheritance (override vs new)
+- C# inheritance (override vs new, virtual, etc.)
 - How to use try-catch blocks
 - Tuples
 - Tuples are immutable!
