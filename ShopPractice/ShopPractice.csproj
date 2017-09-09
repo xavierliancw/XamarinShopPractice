@@ -51,6 +51,7 @@
     <Compile Include="Database Stuff\Database Objects\ChatBubbleDO.cs" />
     <Compile Include="Database Stuff\Database Objects\ChatParticipantDO.cs" />
     <Compile Include="Database Stuff\Database Objects\ConversationDO.cs" />
+    <Compile Include="Database Stuff\Database Objects\DatabaseObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

@@ -7,9 +7,9 @@ namespace ShopPractice.DatabaseStuff
         string GetThePath(string filename);
     }
 
-	/// <summary>
-	/// Automatically creates all database tables and is the system-wide access point into the database.
-	/// </summary>
+    /// <summary>
+    /// Automatically creates all database tables and is the system-wide access point into the database.
+    /// </summary>
     public static class TheDatabase
     {
         private static SQLiteAsyncConnection _connection;
@@ -20,7 +20,8 @@ namespace ShopPractice.DatabaseStuff
         /// <value>The connection to the database.</value>
         public static SQLiteAsyncConnection Connection
         {
-            get {
+            get
+            {
                 if (_connection == null)
                 {
                     //Use the DependencyService and the NativeBridgeToDB to get a device's path to the DB because it's platform specific code
