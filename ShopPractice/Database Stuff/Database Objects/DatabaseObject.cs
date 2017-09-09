@@ -11,7 +11,7 @@ namespace ShopPractice
             return await TheDatabase.Connection.DeleteAsync(this);
         }
 
-        public async Task SaveToDatabase()
+        public virtual async Task SaveToDatabase()
         {
             await TheDatabase.Connection.InsertAsync(this);
         }
