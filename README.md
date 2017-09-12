@@ -20,6 +20,11 @@ _Through Commit:_ b7ad704d5489baf8cbb0cd23de4a1daf5bea149f
 - Tuples
 - Tuples are immutable!
 
+_Through Commit:_ 45e2d2a9d08a271223f0593fb9f9c33f0acb74cd
+- Nullables!
+- Namespace separation to facilitate separation of concerns
+- Static classes and static methods
+
 ## Xamarin Things Learned:
 _Through Commit:_ c6149061b94bfbabacdc04b68041f9bedbccf3a1
 - Persisting cross-platform data through a SQLite database
