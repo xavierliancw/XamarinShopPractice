@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ShopPractice.DatabaseStuff;
 using SQLite;
-namespace ShopPractice
+namespace DatabaseStuff
 {
     /// <summary>
     /// Every conversation has a GUID identifying itself and a human readable name.
@@ -13,15 +13,6 @@ namespace ShopPractice
         [PrimaryKey]
         public Guid GUID { get; set; }
         public String Name { get; set; }
-
-        public ConversationDO() {}
-
-        public ConversationDO(String name, Guid initialParticipantGUID, String initialParticipantName)
-        {
-            this.GUID = Guid.NewGuid();
-            this.Name = name;
-            ChatParticipantDO initialChatter = new ChatParticipantDO(initialParticipantGUID, initialParticipantName, true);
-        }
 
         override public async Task SaveToDatabase()
         {
@@ -40,7 +31,7 @@ namespace ShopPractice
 
         #region Database Methods
 
-        public static async Task<List<ConversationDO>> GetAllConversations()
+        public static async Task<List<ConversationDO>> GetAllConversationsAsync()
         {
             return await TheDatabase.Connection.Table<ConversationDO>().ToListAsync();
         }

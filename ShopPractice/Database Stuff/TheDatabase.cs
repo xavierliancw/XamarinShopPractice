@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using DatabaseStuff;
+using SQLite;
 using Xamarin.Forms;
 namespace ShopPractice.DatabaseStuff
 {

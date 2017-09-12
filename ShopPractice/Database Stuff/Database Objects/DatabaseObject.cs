@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using ShopPractice.DatabaseStuff;
 
-namespace ShopPractice
+namespace DatabaseStuff
 {
     public class DatabaseObject
     {

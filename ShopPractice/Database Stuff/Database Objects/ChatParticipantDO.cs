@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ShopPractice.DatabaseStuff;
 using SQLite;
-namespace ShopPractice
+namespace DatabaseStuff
 {
     /// <summary>
     /// A chat participant has a GUID to identify a chatter, a human-readable name to identify chatter to other humans, and a

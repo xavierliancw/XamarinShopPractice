@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using ShopPractice.DatabaseStuff;
 using System.Threading.Tasks;
 
-namespace ShopPractice
+namespace DatabaseStuff
 {
     /// <summary>
     /// A database object that represents a single chat bubble.
@@ -51,9 +51,9 @@ namespace ShopPractice
         /// <summary>
         /// Obtains all messages that belong to a certain conversation.
         /// </summary>
-        /// <returns>The bubbles for conversation.</returns>
+        /// <returns>The messages for a conversation.</returns>
         /// <param name="GUID">GUID.</param>
-        public static async Task<List<ChatBubbleDO>> GetBubblesForConversationAsync(Guid GUID)
+        public static async Task<List<ChatBubbleDO>> RetrieveMessagesForConversationAsync(Guid GUID)
         {
             return await TheDatabase.Connection.Table<ChatBubbleDO>().Where(
                 x => x.ConversationGUID == GUID
