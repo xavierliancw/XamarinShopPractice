@@ -8,7 +8,7 @@ namespace ShopPractice
         {
             InitializeComponent();
 
-            MainPage = new ShopPracticePage();
+            MainPage = new LandingPg();
         }
 
         protected override void OnStart()

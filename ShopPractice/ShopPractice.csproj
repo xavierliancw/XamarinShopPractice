@@ -33,6 +33,10 @@
     <EmbeddedResource Include="ChatPg.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="LandingPg.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Embedded Assets\landing_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -47,6 +51,11 @@
       <DependentUpon>ChatPg.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\ChatSvc.cs" />
+    <Compile Include="LandingPg.xaml.cs">
+      <DependentUpon>LandingPg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\ImageResourceExtension.cs" />
+    <Compile Include="Custom UI Elements\GalleryVw.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -70,6 +79,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Embedded Assets\" />
+    <Folder Include="Tools\" />
+    <Folder Include="Custom UI Elements\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

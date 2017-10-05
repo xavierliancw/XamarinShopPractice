@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customui="clr-namespace:ShopPractice.CustomUIElements" xmlns:local="clr-namespace:ShopPractice;assembly=ShopPractice" x:Class="ShopPractice.LandingPg">
+    <ContentPage.Content>
+        <Grid x:Name="baseCntnr" ColumnSpacing="0" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" x:Name="gridSection0_0Height" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image Source="{local:ImageResource ShopPractice.Embedded_Assets.landing_logo.png}" BackgroundColor="Fuchsia" Aspect="AspectFill" Grid.Row="0" />
+            <BoxView BackgroundColor="#5AE6BE" Grid.Row="1" />
+            <Grid x:Name="botHalfCntnr" BackgroundColor="Black" Grid.Row="2" ColumnSpacing="0" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <customui:GalleryVw x:Name="galVw" Grid.Row="0" />
+                <Grid x:Name="loginCntnr" RowSpacing="0" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Button BackgroundColor="Red" Grid.Row="0" />
+                    <BoxView BackgroundColor="Black" Grid.Row="1" />
+                    <Button BackgroundColor="Aqua" Grid.Row="2" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
