@@ -2,7 +2,7 @@
 using System.Drawing;
 using UIKit;
 
-namespace ShopPractice.iOS
+namespace ShopPractice.iOS.CustomRenderedUI
 {
     public class GalleryVwIOS : UIView
     {
@@ -12,7 +12,7 @@ namespace ShopPractice.iOS
 
         public GalleryVwIOS()
         {
-            BackgroundColor = UIColor.Magenta;
+            BackgroundColor = UIColor.Yellow;
 			var swiper = new UISwipeGestureRecognizer((obj) =>
 			{
 				Debug.WriteLine("HOLY COW A SWIPE");

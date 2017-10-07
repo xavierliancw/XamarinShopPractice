@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ShopPractice
@@ -11,7 +10,7 @@ namespace ShopPractice
     {
         #region Private Settings
 
-        private const uint ANIMATIONDURATIONLOGINSLIDEIN = 750;
+        private const uint ANIMATIONDURATIONLOGINSLIDEIN = 1000;
 
         #endregion
         #region Private Properties
@@ -36,6 +35,10 @@ namespace ShopPractice
             if (!cntnrPosnsSetUp)
             {
                 SetupCntnrPosns();
+
+                //Customize all of the custom rendered UI elements' UI elements
+                startBt.SecondaryTextXPercentagePlacement = 0.75f;
+                startBt.SecondaryText = "▶";
             }
         }
 
@@ -46,25 +49,31 @@ namespace ShopPractice
         {
             Animation animation;    //Animation to shorten top image
 
-			//Set up the animation to shorten the top image
+            //First, lock and unlock values to facilitate intended expanding animation behavior
 			gridSection0_0Height.Height = new GridLength(Application.Current.MainPage.Height / 2);  //Switch from "*"(xaml) to a hard number
+            heightLock_r1c0.Height = new GridLength(Application.Current.MainPage.Height / 2);
+            heightLock_r0c0.Height = new GridLength(1, GridUnitType.Star);
+            logInHeightLock.Height = new GridLength(Application.Current.MainPage.Bounds.Height * 0.6);
+
+            //Set up the expanding animation
             animation = new Animation(
                 (obj) => gridSection0_0Height.Height = new GridLength(LimitDouble(obj, 0, Double.MaxValue)),
                 gridSection0_0Height.Height.Value,
                 Application.Current.MainPage.Bounds.Height * 0.4
             );
             //Fire the animation
-            animation.Commit(baseCntnr, "shortenGridSection0_0", 1, ANIMATIONDURATIONLOGINSLIDEIN, Easing.CubicInOut);
+            animation.Commit(baseCntnr, "shortenGridSection0_0", 1, ANIMATIONDURATIONLOGINSLIDEIN, Easing.CubicOut);
 
-            //Fire and forget
-            Task.Run(() => { 
-				//Slide the gallery view out and fade out
-                galVw.TranslateTo(-galVw.Bounds.Width, 0, ANIMATIONDURATIONLOGINSLIDEIN, Easing.CubicInOut);
+            //Fire and forget the sliding animations
+            Task.Run(() =>
+            {
+                //Slide the gallery view out and fade out
+                galCntnr.TranslateTo(-galCntnr.Bounds.Width, 0, ANIMATIONDURATIONLOGINSLIDEIN, Easing.CubicInOut);
                 galVw.FadeTo(0, ANIMATIONDURATIONLOGINSLIDEIN);
 
                 //Slide the log in container in and fade in
                 loginCntnr.Opacity = 0;
-				loginCntnr.TranslateTo(0, 0, ANIMATIONDURATIONLOGINSLIDEIN, Easing.CubicInOut);
+                loginCntnr.TranslateTo(0, 0, ANIMATIONDURATIONLOGINSLIDEIN, Easing.CubicInOut);
                 loginCntnr.FadeTo(1, ANIMATIONDURATIONLOGINSLIDEIN);
             });
         }
@@ -80,19 +89,19 @@ namespace ShopPractice
             cntnrPosnsSetUp = true;
         }
 
-		double LimitDouble(double value, double minValue, double maxValue)
-		{
+        double LimitDouble(double value, double minValue, double maxValue)
+        {
             if (value < minValue)
             {
                 return minValue;
             }
-			else if (value > maxValue)
-			{
-				return maxValue;
-			}
+            else if (value > maxValue)
+            {
+                return maxValue;
+            }
             else
             {
-				return value;
+                return value;
             }
         }
 

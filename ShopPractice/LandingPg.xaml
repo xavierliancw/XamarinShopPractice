@@ -1,28 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customui="clr-namespace:ShopPractice.CustomUIElements" xmlns:local="clr-namespace:ShopPractice;assembly=ShopPractice" x:Class="ShopPractice.LandingPg">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customui="clr-namespace:ShopPractice.CustomRenderedUI" xmlns:local="clr-namespace:ShopPractice;assembly=ShopPractice" x:Class="ShopPractice.LandingPg">
     <ContentPage.Content>
         <Grid x:Name="baseCntnr" ColumnSpacing="0" RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" x:Name="gridSection0_0Height" />
-                <RowDefinition Height="5" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Image Source="{local:ImageResource ShopPractice.Embedded_Assets.landing_logo.png}" BackgroundColor="Fuchsia" Aspect="AspectFill" Grid.Row="0" />
-            <BoxView BackgroundColor="#5AE6BE" Grid.Row="1" />
-            <Grid x:Name="botHalfCntnr" BackgroundColor="Black" Grid.Row="2" ColumnSpacing="0" RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <customui:GalleryVw x:Name="galVw" Grid.Row="0" />
-                <Grid x:Name="loginCntnr" RowSpacing="0" Grid.Row="0">
+            <Grid x:Name="botHalfCntnr" Grid.Row="1" RowSpacing="0" BackgroundColor = "Black">
+<!--            Add a grid so that galVw and startBt doesn't animate-->
+                <Grid RowSpacing="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="1" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="0" x:Name="heightLock_r0c0"/>
+                        <RowDefinition Height="*" x:Name="heightLock_r1c0"/>
                     </Grid.RowDefinitions>
-                    <Button BackgroundColor="Red" Grid.Row="0" />
-                    <BoxView BackgroundColor="Black" Grid.Row="1" />
-                    <Button BackgroundColor="Aqua" Grid.Row="2" />
+                    <BoxView BackgroundColor="#5AE6BE" Grid.Row="0" />
+                    <RelativeLayout x:Name="galCntnr" Grid.Row="2">
+                        <customui:GalleryVw x:Name="galVw"
+                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width}"
+                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}"
+                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=0}"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=0}"
+                        />
+                        <customui:WFButton x:Name="startBt" Clicked="SlideLogInCntnrIn"
+                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.66}"
+                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.225}"
+                            RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,Property=Width,Factor=.165}"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=.60}"
+                            WFText="Get started" TextXPercentagePlacement="0.33"
+                        />
+                    </RelativeLayout>
+                </Grid>
+                <Grid x:Name="loginCntnr" RowSpacing="0" BackgroundColor="Black">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" x:Name="logInHeightLock"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid RowSpacing="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <BoxView BackgroundColor="#222222" Grid.Row="1"/>
+                        </Grid>
+                        <Label Text="Login" Grid.Row="0" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+
+                        <AbsoluteLayout Grid.Row="1" BackgroundColor="#222222">
+                            <Grid RowSpacing="10" ColumnSpacing="10"
+                                AbsoluteLayout.LayoutBounds=".5,.5,.8,.8"
+                                AbsoluteLayout.LayoutFlags="All"
+                            >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                            <customui:WFButton Grid.Row="0" WFText="Email" />
+                            <customui:WFButton Grid.Row="1" WFText="Password" WFBorderColor="Gray"/>                               
+                            </Grid>
+                        </AbsoluteLayout>
+                        <AbsoluteLayout Grid.Row="2" BackgroundColor="#222222" >
+                            <Grid RowSpacing="10" ColumnSpacing="10"
+                                AbsoluteLayout.LayoutBounds=".5,.5,.8,.8"
+                                AbsoluteLayout.LayoutFlags="All">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width = "*"/>
+                                    <ColumnDefinition Width = "*"/>
+                                    <ColumnDefinition Width = "*"/>
+                                </Grid.ColumnDefinitions>
+                                <customui:WFButton x:Name="loginBt" Grid.Row="0" Grid.ColumnSpan="2" 
+                                    WFText="Login" TextXPercentagePlacement="0.33" 
+                                    SecondaryText="▶" SecondaryTextXPercentagePlacement="0.8"/>
+                                <customui:WFButton x:Name="facebookBt" Grid.Row="1" Grid.ColumnSpan="2" WFBorderColor="#4875A9"
+                                    WFText="Facebook" TextXPercentagePlacement="0.33" 
+                                    SecondaryText="▶" SecondaryTextXPercentagePlacement="0.8"/>
+                                <customui:WFButton x:Name="newBt" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"  WFBorderColor="Gray"
+                                    WFText="New" TextYPercentagePlacement="0.4" 
+                                    SecondaryText="▼" SecondaryTextYPercentagePlacement="0.6"/>
+                            </Grid>
+                        </AbsoluteLayout>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

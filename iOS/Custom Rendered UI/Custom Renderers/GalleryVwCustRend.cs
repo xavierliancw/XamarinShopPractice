@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Diagnostics;
 using CoreGraphics;
-using ShopPractice.CustomUIElements;
-using ShopPractice.iOS.CustomRenderers;
+using ShopPractice.CustomRenderedUI;
+using ShopPractice.iOS.CustomRenderedUI.CustomRenderers;
 using UIKit;
 using Xamarin.Forms;
 
 [assembly: ExportRenderer(typeof(GalleryVw), typeof(GalleryVwCustRend))]
-namespace ShopPractice.iOS.CustomRenderers
+namespace ShopPractice.iOS.CustomRenderedUI.CustomRenderers
 {
     public class GalleryVwCustRend : Xamarin.Forms.Platform.iOS.ViewRenderer<GalleryVw, UIView>
     {
         GalleryVwIOS galleryVw;
+
         protected override void OnElementChanged(Xamarin.Forms.Platform.iOS.ElementChangedEventArgs<GalleryVw> e)
         {
             base.OnElementChanged(e);

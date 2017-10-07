@@ -109,7 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Custom Renderers\" />
+    <Folder Include="Custom Rendered UI\" />
+    <Folder Include="Custom Rendered UI\Custom Renderers\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -122,8 +123,14 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Custom Renderers\GalleryVwCustRend.cs" />
-    <Compile Include="GalleryVwIOS.cs" />
+    <Compile Include="Custom Rendered UI\GalleryVwIOS.cs" />
+    <Compile Include="Custom Rendered UI\Custom Renderers\WFButtonCustRend.cs" />
+    <Compile Include="Custom Rendered UI\Custom Renderers\GalleryVwCustRend.cs" />
+    <Compile Include="WFButtonIOS.cs" />
+    <Compile Include="WFButtonIOS.designer.cs">
+      <DependentUpon>WFButtonIOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom Rendered UI\WFButtonIOS.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.270\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

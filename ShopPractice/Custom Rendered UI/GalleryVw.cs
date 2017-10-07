@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace ShopPractice.CustomUIElements
+namespace ShopPractice.CustomRenderedUI
 {
     public class GalleryVw : View
     {
